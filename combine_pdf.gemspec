@@ -6,11 +6,11 @@ require 'combine_pdf/version'
 Gem::Specification.new do |spec|
   spec.name          = "combine_pdf"
   spec.version       = CombinePDF::VERSION
-  spec.authors       = ["Boaz Segev"]
-  spec.email         = ["bo@bowild.com"]
+  spec.authors       = ["Anuraj Agarwal"]
+  spec.email         = ["anurajag117@gmail.com"]
   spec.summary       = %q{Combine, stamp and watermark PDF files in pure Ruby.}
   spec.description   = %q{A nifty gem, in pure Ruby, to parse PDF files and combine (merge) them with other PDF files, number the pages, watermark them or stamp them, create tables, add basic text objects etc` (all using the PDF file format).}
-  spec.homepage      = "https://github.com/boazsegev/combine_pdf"
+  spec.homepage      = "https://github.com/Anuraj0124/combine_pdf"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
