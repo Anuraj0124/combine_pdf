@@ -11,6 +11,7 @@
 *.so
 *.o
 *.a
+/test/pdfs
 mkmf.log
 
 .DS_Store
