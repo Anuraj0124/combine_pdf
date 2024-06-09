@@ -1,5 +1,9 @@
 # Change Log
 
+#### Change log v.1.0.26.2 (2024-06-08)
+
+**Fix**: Made kwargs for muting ParsingError and RangeError for better control
+
 #### Change log v.1.0.26.1 (2024-06-08)
 
 **Fix**: Fixed ParsingError for older pdf formats and RangeError for scanned PDFs

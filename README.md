@@ -1,6 +1,6 @@
 # CombinePDF - the ruby way for merging PDF files
 
-[![Gem Version](https://img.shields.io/badge/Version-1.0.26.1-green)](http://badge.fury.io/rb/combine_pdf)
+[![Gem Version](https://img.shields.io/badge/Version-1.0.26.2-green)](http://badge.fury.io/rb/combine_pdf)
 [![GitHub](https://img.shields.io/badge/GitHub-Open%20Source-blue.svg)](https://github.com/Anuraj0124/combine_pdf)
 [![Documentation](http://inch-ci.org/github/boazsegev/combine_pdf.svg?branch=master)](https://www.rubydoc.info/github/Anuraj0124/combine_pdf/master)
 
@@ -110,7 +110,7 @@ pdf.number_pages
 pdf.save "file_with_numbering.pdf"
 ```
 
-Numbering can be done with many different options, with different formating, with or without a box object, and even with opacity values - [see documentation](https://www.rubydoc.info/github/boazsegev/combine_pdf/CombinePDF/PDF#number_pages-instance_method).
+Numbering can be done with many different options, with different formatting, with or without a box object, and even with opacity values - [see documentation](https://www.rubydoc.info/github/boazsegev/combine_pdf/CombinePDF/PDF#number_pages-instance_method).
 
 For example, should you prefer to place the page number on the bottom right side of all PDF pages, do:
 
@@ -239,7 +239,7 @@ Credit to Boaz Segev and his wonderful work, just working on it for few hacky so
 
 MIT
 
-# Contributions
+# Contributions to the creator
 
 You can look at the [GitHub Issues Page](https://github.com/boazsegev/combine_pdf/issues) and see the ["help wanted"](https://github.com/boazsegev/combine_pdf/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) tags.
 

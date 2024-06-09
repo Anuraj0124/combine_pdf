@@ -33,7 +33,7 @@ module CombinePDF
     # they are mainly to used to know if the file is (was) encrypted and to get more details.
     attr_reader :info_object, :root_object, :names_object, :forms_object, :outlines_object, :metadata
 
-    attr_reader :allow_optional_content, :raise_on_encrypted
+    attr_reader :allow_optional_content, :raise_on_encrypted, :mute_malformed_error, :mute_range_error
     # when creating a parser, it is important to set the data (String) we wish to parse.
     #
     # <b>the data is required and it is not possible to set the data at a later stage</b>
@@ -59,6 +59,8 @@ module CombinePDF
       @scanner = nil
       @allow_optional_content = options[:allow_optional_content]
       @raise_on_encrypted = options[:raise_on_encrypted]
+      @mute_malformed_error = options[:mute_malformed_error]
+      @mute_range_error = options[:mute_range_error]
     end
 
     # parse the data in the new parser (the data already set through the initialize / new method)
@@ -80,7 +82,8 @@ module CombinePDF
       @parsed = _parse_
       # puts @parsed
 
-      @parsed.shift unless @parsed.first.is_a?(Hash)
+      # Deletes the first ele if malformed error is muted and is not a hash
+      @parsed.shift if mute_malformed_error && !@parsed.first.is_a?(Hash)
 
       unless (@parsed.select { |i| !i.is_a?(Hash) }).empty?
         # p @parsed.select
@@ -365,12 +368,13 @@ module CombinePDF
           # advance by the publshed stream length (if any)
           old_pos = @scanner.pos
 
-          length_to_add = out.last.is_a?(Hash) && out.last[:Length].is_a?(Integer) ? out.last[:Length] - 2 : nil
 
-          if(out.last.is_a?(Hash) && out.last[:Length].is_a?(Integer) && out.last[:Length] > 2 && (@scanner.rest_size > length_to_add))
+          if(out.last.is_a?(Hash) && out.last[:Length].is_a?(Integer) && out.last[:Length] > 2)
+            has_sufficient_length = @scanner.rest_size > out.last[:Length] - 2
+            length_to_add = mute_range_error &&  !has_sufficient_length ? 0 : out.last[:Length] - 2
             @scanner.pos += length_to_add
           end
-
+          
           # the following was dicarded because some PDF files didn't have an EOL marker as required
           # str = @scanner.scan_until(/(\r\n|\r|\n)endstream/)
           # instead, a non-strict RegExp is used:
